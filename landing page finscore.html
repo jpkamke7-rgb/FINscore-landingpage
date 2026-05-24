@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINscore Empresas - Tu Score Comercial Alternativo</title>
+    <style>
+        :root {
+            --primary-color: #0A2540;
+            --accent-color: #00D4B2;
+            --secondary-accent: #635BFF;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: var(--white);
+            border-bottom: 1px solid #E5E7EB;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #113860;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0A2540 0%, #1A3A60 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero span {
+            background-color: rgba(0, 212, 178, 0.15);
+            color: var(--accent-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #AEB9E1;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 212, 178, 0.4);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--white);
+            padding: 30px 0;
+            border-bottom: 1px solid #E5E7EB;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.premium {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0, 212, 178, 0.1);
+            position: relative;
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .pricing-card ul li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Conversion Form */
+        .registration-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .form-container {
+            background-color: var(--white);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 15px;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(10, 37, 64, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #113860;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #AEB9E1;
+            padding: 40px 0;
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <div class="logo">FiN<span>score</span> <small style="font-size: 12px; font-weight: 400; color: var(--text-light); margin-left: 10px;">Empresas</small></div>
+            <a href="#registro" class="nav-btn">Unirme al Piloto</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <span>Módulo Blockchain - Proyecto FINscore</span>
+            <h1>Visibiliza tu negocio y accede a financiamiento comercial</h1>
+            <p>Tus ventas diarias tienen valor. FINscore evalúa tus cobros por Mercado Pago, SumUp o Transbank y crea un SCORE de reputación infalsificable usando tecnología Blockchain (Red Celo) para que los bancos por fin te evalúen de manera justa.</p>
+            <a href="#registro" class="cta-btn">Quiero mi SCORE - Unirme al Piloto</a>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Alto Riesgo</h3>
+                    <p>Así te califica el banco si no tienes balances formales consolidados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>92%</h3>
+                    <p>De créditos rechazados a pymes por asimetría de información</p>
+                </div>
+                <div class="stat-item">
+                    <h3>SBT</h3>
+                    <p>Soulbound Tokens: Tu nueva credencial financiera intransferible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing (Freemium Model) -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Elige cómo construir tu reputación</h2>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>FINscore Base</h3>
+                    <div class="price">Gratis</div>
+                    <ul>
+                        <li>Generación de SCORE comercial básico</li>
+                        <li>Acuñación de Soulbound Tokens (SBT)</li>
+                        <li>Actualización manual (1 vez al mes)</li>
+                        <li>Válido para postular a créditos</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card premium">
+                    <div class="premium-badge">Más Elegido</div>
+                    <h3>FINscore Pro</h3>
+                    <div class="price" style="font-size: 28px; margin-top: 10px;">Suscripción Mensual</div>
+                    <ul>
+                        <li>Sincronización automática de ventas (MercadoPago, SumUp, etc.)</li>
+                        <li>Dashboard avanzado de salud financiera y alertas de caja</li>
+                        <li><strong>Fast-Track:</strong> Prioridad de evaluación en bancos aliados en 24h</li>
+                        <li>Reportes financieros descargables</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section (Interest Only) -->
+    <section id="registro" class="registration-section">
+        <div class="container">
+            <div class="form-container">
+                <h3 style="font-size: 24px; color: var(--primary-color); margin-bottom: 10px; text-align: center; font-weight: 700;">Postula al Piloto FINscore</h3>
+                <p style="text-align: center; color: var(--text-light); font-size: 14px; margin-bottom: 30px;">Déjanos tus datos. Nuestro equipo te contactará para generar tu SCORE inicial sin compromiso.</p>
+                
+                <form onsubmit="event.preventDefault(); alert('¡Simulación Exitosa! Tu interés ha sido registrado. Nuestro equipo te contactará a la brevedad para simular la entrega de tu SCORE inicial.');">
+                    <div class="form-group">
+                        <label for="nombre-negocio">Nombre del Emprendimiento / Comercio</label>
+                        <input type="text" id="nombre-negocio" placeholder="Ej. Mi Tienda Online o Minimarket Central" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nombre-titular">Nombre del Dueño / Representante</label>
+                        <input type="text" id="nombre-titular" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" placeholder="ejemplo@negocio.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="plataforma">¿Con qué plataforma recibes tus ingresos principalmente?</label>
+                        <select id="plataforma" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="mercadopago">Mercado Pago</option>
+                            <option value="sumup">SumUp</option>
+                            <option value="transbank">Transbank (Redelcom / POS)</option>
+                            <option value="mach">MACH / Chek</option>
+                            <option value="efectivo">Solo Efectivo / Transferencias directas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 30px;">
+                        <button type="submit" class="submit-btn">¡Me interesa! Solicitar mi SCORE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div>&copy; 2026 FINscore Protocol. Desarrollado para el Módulo Blockchain UDD.</div>
+            <div>Integrantes: Juan Pablo Kamke, Arturo Bettenhauser, Cristián Rodríguez, Alfredo Urzúa.</div>
+        </div>
+    </footer>
+
+</body>
+</html>
